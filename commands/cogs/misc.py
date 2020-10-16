@@ -14,7 +14,6 @@ class misc(commands.Cog):
     async def invite(self, ctx):
         await ctx.send('Step 1: Open https://discordapp.com/oauth2/authorize?client_id=766710147644915739&scope=bot&permissions=116736\nStep 2: Login to Discord if prompted\nStep 3: Select the server you wish to invite the bot to from the dropdown (required Admin privileges on the server)\nStep 4: Continue through the prompts as needed')
 
-
     @commands.command(name='reload',
                      description='In the event that the loops (in particular interval cutoff posting) stop working, run this command to restart that process. If you want access to this command, please use the .notify command')
     async def reload(self, ctx, cog: str = ''):
