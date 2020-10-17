@@ -43,7 +43,7 @@ class updates(commands.Cog):
     @commands.command(name='addtracking',
                       description="Given a channel and interval (1min or 1hour), this channel will receive cutoff updates in regular intervals",
                       help="You can specify either the channel's id, or by using the full channel name (e.g. #1min)\n\n.addtracking #1min-updates 1\n.addtracking 523339468229312555 60\n.addtracking (this defaults to 1 hour and channel the command is ran in)")
-    async def addTracking(self, ctx, channel: TextChannel = None, interval: int = 60):
+    async def add_cutoff_tracking(self, ctx, channel: TextChannel = None, interval: int = 60):
         from commands.formatting.database_formatting import add_channel_to_cutoff_db
         if ctx.message.author.guild_permissions.administrator:
             ValidIntervals = [1,60]
@@ -61,7 +61,7 @@ class updates(commands.Cog):
     @commands.command(name='removetracking',
                       description="Given a channel, interval (1min or 1hour), and server input, this channel will be removed from cutoff tracking updates",
                       help="You can specify either the channel's id, or by using the full channel name (e.g. #1min)\n\n.removetracking #1min-updates 2\n.removetracking 523339468229312555 60\n.removetracking (this defaults to 1 hour and channel the command is ran in")
-    async def removeTracking(self, ctx, channel: TextChannel = None, interval: int = 3600):
+    async def rm_cutoff_tracking(self, ctx, channel: TextChannel = None, interval: int = 60):
         from commands.formatting.database_formatting import rm_channel_from_cutoff_db
         if ctx.message.author.guild_permissions.administrator:
             ValidIntervals = [1,60]

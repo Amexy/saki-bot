@@ -5,12 +5,14 @@ import re, time, discord
 
 async def get_cutoff_formatting(tier: str = '0'):
     from api.api_functions import get_sekai_current_event_standings_api, get_sekai_current_event_api
+    from commands.formatting.event_info import get_event_name, get_current_event_id
     from commands.formatting.time_formatting import format_time
     fmt = "%Y-%m-%d %H:%M:%S %Z%z"
     now_time = datetime.now(timezone('US/Central'))
     entries = []
+    event_id = await get_current_event_id()
     event_api = await get_sekai_current_event_api()
-    event_name = event_api['EVENT_NAME_1']
+    event_name = await get_event_name(event_id)
     current_event_cutoff_api = await get_sekai_current_event_standings_api()
     last_updated_time = time.time() - current_event_cutoff_api['time'] 
     last_updated_time = f"{await format_time(last_updated_time)} ago"

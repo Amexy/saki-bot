@@ -26,7 +26,7 @@ async def get_event_start_time(event_id):
 async def get_event_end_time(event_id):
     from api.api_functions import get_sekai_events_api
     event_api = await get_sekai_events_api()
-    event_end_time = event_api[0]['closedAt']
+    event_end_time = event_api[0]['aggregateAt']
     return event_end_time
 
 async def get_event_banner_name(event_id):
