@@ -18,7 +18,7 @@ class misc(commands.Cog):
                      description='In the event that the loops (in particular interval cutoff posting) stop working, run this command to restart that process. If you want access to this command, please use the .notify command')
     async def reload(self, ctx, cog: str = ''):
         if not cog: #By default, it will reload the Loops command since this is the most common one that fails and users need access to
-            ValidUsers = [158699060893581313]
+            ValidUsers = [158699060893581313,766946395398995989,384333652344963074,222106235283963904]
             if ctx.message.author.id not in ValidUsers:
                 await ctx.send("You are not authorized to use this command. If you'd like access, please use the .notify command requesting access")
             else: 
@@ -27,9 +27,9 @@ class misc(commands.Cog):
                         task.cancel()
                         print('Cancelled task ' + str(task._coro))
                 try:
-                    from commands.cogs.Loops import Loops
-                    Loops(self.bot)
-                    c = self.bot.get_cog("Loops")
+                    from commands.cogs.loops import loops
+                    loops(self.bot)
+                    c = self.bot.get_cog("loops")
                     self.bot.remove_cog(c)
                     self.bot.add_cog(c)
                     await ctx.send("Successfully reloaded the Loops cog")

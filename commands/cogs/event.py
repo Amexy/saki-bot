@@ -66,7 +66,7 @@ class event(commands.Cog):
         embed.add_field(name='End', value=event_end_time, inline=True)
         await ctx.send(embed=embed)
 
-    valid_tiers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 100, 200, 300, 400, 500, 1000, 2000, 3000, 4000, 5000, 10000, 20000,
+    valid_tiers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50, 100, 200, 300, 400, 500, 1000, 2000, 3000, 4000, 5000, 10000, 20000,
                    30000, 40000, 50000, 100000}
 
     @commands.command(name='cutoff',
@@ -99,8 +99,8 @@ class event(commands.Cog):
 
         from commands.formatting.cutoff_formatting import get_cutoff_formatting
 
-        if tier == 0:
-            await ctx.send(await get_cutoff_formatting('0'))
+        if tier == 0 or tier == 10:
+            await ctx.send(await get_cutoff_formatting(str(tier)))
         elif tier in self.valid_tiers:
             await ctx.send(embed=await get_cutoff_formatting(str(tier)))
         else:
