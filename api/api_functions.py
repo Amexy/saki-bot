@@ -37,8 +37,3 @@ async def get_sekai_event_deck_bonuses_api():
         api = 'https://raw.githubusercontent.com/Sekai-World/sekai-master-db-diff/master/eventDeckBonuses.json'
         async with session.get(api) as r:
             return await r.json(content_type='text/plain')
-   
-
-1603219978749
-1603219618762
-1603220038751
