@@ -2,7 +2,9 @@ import requests, json, aiohttp
 
 async def get_sekai_current_event_standings_api(event_id):
     async with aiohttp.ClientSession() as session:
-        api = f'https://raw.githubusercontent.com/Sekai-World/sekai-event-track/main/event{event_id}.json'
+        from random import random
+        # Use a random number to avoid caching issues 
+        api = f'https://bitbucket.org/sekai-world/sekai-event-track/raw/main/event{event_id}.json?t={random()}'
         async with session.get(api) as r:
             return await r.json(content_type='text/plain')
 
@@ -37,3 +39,6 @@ async def get_sekai_event_deck_bonuses_api():
             return await r.json(content_type='text/plain')
    
 
+1603219978749
+1603219618762
+1603220038751

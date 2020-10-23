@@ -15,6 +15,7 @@ async def get_cutoff_formatting(tier: str = '0'):
     current_event_cutoff_api = await get_sekai_current_event_standings_api(event_id)
     last_updated_time = time.time() - (current_event_cutoff_api['time'] / 1000)
     last_updated_time = f"{await format_time(last_updated_time)} ago"
+    #print(f"Current time: {time.time() * 1000}\nAPI Time: {current_event_cutoff_api['time']}")
     if tier == '0': # all cutoffs
         for x in current_event_cutoff_api: 
             if x != 'time':
